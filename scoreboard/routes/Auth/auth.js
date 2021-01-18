@@ -3,7 +3,7 @@ const passport = require("express");
 
 const router = express.Router();
 const bcrypt = require("bcrypt");
-const User = requite("../../models/User");
+// const User = require("../../models/User");
 
 const uploadCloud = require("../../config/cloudinary");
 
@@ -19,3 +19,6 @@ router.post("/signup", (req, res, next) => {
 
 
 });
+
+
+module.exports = router;

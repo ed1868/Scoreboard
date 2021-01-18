@@ -4,8 +4,9 @@ import { Switch, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 // import { configureStore } from "../Store";
 import { BrowserRouter as Router } from "react-router-dom";
-import Navbar from './components/Navbar/Navbar';
-import Main from './components/Main';
+import Navbar from "./components/Navbar/Navbar";
+import Main from "./components/Main";
+import Signup from "./components/Auth/signup"
 
 // const store = configureStore();
 
@@ -14,7 +15,7 @@ class App extends Component {
     super();
 
     this.state = {
-      user: null
+      user: null,
     };
 
     // this.authService = new AuthService();
@@ -28,7 +29,7 @@ class App extends Component {
     //   .then(user => this.setState({ ...this.state, user }));
   };
 
-  getUser = user => {
+  getUser = (user) => {
     this.setState({ ...this.state, user });
   };
 
@@ -40,20 +41,28 @@ class App extends Component {
 
   render() {
     return (
-   
-        <Router>
-          <div className="App">
-            <Navbar fetchUser={this.fetchUser} userInSession={this.state.user} logout={this.logout}/>
-            <Switch>
-              <Route
-                exact
-                path="/"
-                render={() => <Main getUser={this.getUser} />}
-              />
-            </Switch>
-          </div>
-        </Router>
-  
+      <Router>
+        <div className="App">
+          <Navbar
+            fetchUser={this.fetchUser}
+            userInSession={this.state.user}
+            logout={this.logout}
+          />
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={() => <Main getUser={this.getUser} />}
+            />
+
+            <Route
+              exact
+              path="/signup"
+              render={() => <Signup getUser={this.getUser} />}
+            />
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }
