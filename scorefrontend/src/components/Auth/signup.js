@@ -48,7 +48,7 @@ export default class Signup extends Component {
         jerseyNumber,
       })
       .then((user) => {
-        console.log('hello')
+        console.log("hello");
         // this.props.getUser(user);
         this.setState({
           username: "",
@@ -114,7 +114,7 @@ export default class Signup extends Component {
                 type="text"
               />
 
-<label htmlFor="name">Last : </label>
+              <label htmlFor="name">Last : </label>
               <input
                 autoComplete="off"
                 className="form-control form"
@@ -123,7 +123,6 @@ export default class Signup extends Component {
                 onChange={(e) => this.handleChange(e)}
                 type="text"
               />
-
 
               <label htmlFor="password">Password : </label>
               <input
@@ -141,8 +140,6 @@ export default class Signup extends Component {
                 name="url"
                 onChange={(e) => this.handleChange(e)}
               />
-
-
 
               <label htmlFor="gender">Position : </label>
               <input

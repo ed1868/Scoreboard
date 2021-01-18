@@ -26,22 +26,6 @@ class AuthService {
    }).then(response => console.log(response.data))
  }
 
-  // signup = (user) => {
-  //   const formData = new FormData();
-  //   Object.keys(user).forEach(key => formData.append(key, user[key]));
-  //   console.log(user)
-    
-  //   return this.service.post('/signup', formData,{
-  //     headers: {
-  //       "Content-Type": "multipart/form-data"
-  //     }
-  //   }
-    
-       
-    
-  // ).then(response => response.data)
-  //   }
-
 
   // login = (user) => {
 
