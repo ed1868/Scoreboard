@@ -17,5 +17,5 @@ router.post("/signup", (req, res, next) => {
   console.log(`REQUEST BODY : ${req.body}`);
   const { username, password, firstName, lastName, position, jerseyNumber } = req.body;
 
-  
+
 });
