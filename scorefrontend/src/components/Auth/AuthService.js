@@ -3,26 +3,31 @@ import axios from "axios";
 class AuthService {
   constructor() {
     this.service = axios.create({
-      baseURL: `${process.env.REACT_APP_API_URL}/auth`,
-      withCredentials: true
+      baseURL: `${process.env.REACT_APP_API_URL}/auth/`,
+      
     })
   }
 
  signup = (user) => {
-   const formData = new FormData();
-   
-   console.log('THE FORM DATA RECEIVED IN AUTH SERVICE : ' , formData);
+  const formData = new FormData();
+  Object.keys(user).forEach(key => formData.append(key, user[key]));
 
-   console.log('THE REAL SHIT : ', user);
 
-   Object.keys(user).forEach(key => {
-     formData.append(key,user[key]);
-   });
+  const userData = {
+    username: user.username,
+    password: user.password,
+    firstName: user.firstName,
+    lastName: user.lastName,
+    position : user.position,
+    jerseyNumber: user.jerseyNumber
+  }
+   console.log('THE FORM DATA RECEIVED IN AUTH SERVICE : ' , userData);
+console.log('IN AUTH SERVICE : ' , formData);
 
-   return this.service.post('/signup', formData,{
+   return this.service.post('/signup', userData,{
      headers: {
         "Content-Type": "multipart/form-data"     
-     }
+     },
    }).then(response => console.log(response.data))
  }
 
