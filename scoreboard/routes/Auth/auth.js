@@ -21,7 +21,7 @@ const uploadCloud = require("../../config/cloudinary");
 
 router.post("/signup", (req, res, next) => {
   console.log("USER SIGN UP ROUTE IS BEIGN HIT");
-console.log(req)
+// console.log(req)
 
   const {
     username,

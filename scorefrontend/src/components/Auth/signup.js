@@ -23,7 +23,7 @@ export default class Signup extends Component {
   }
 
   handleFormSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     const {
       username,
