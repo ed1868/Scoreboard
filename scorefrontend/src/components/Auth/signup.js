@@ -151,15 +151,7 @@ export default class Signup extends Component {
                 onChange={(e) => this.handleChange(e)}
                 type="text"
               />
-              <label htmlFor="experience">Jersey Number : </label>
-              <input
-                autoComplete="off"
-                className="form-control form"
-                id="jerseyNumber"
-                name="jerseyNumber"
-                onChange={(e) => this.handleChange(e)}
-                type="number"
-              />
+
               <br></br>
 
               <button

@@ -3,43 +3,60 @@ import axios from "axios";
 class AuthService {
   constructor() {
     this.service = axios.create({
-      baseURL: `${process.env.REACT_APP_API_URL}/auth/`,
-    });
+      baseURL: `${process.env.REACT_APP_API_URL}/auth`,
+    
+    })
   }
 
-  signup = (user) => {
+ signup = (user) => {
+  
 
- 
-    
 
     const formData = new FormData();
-    Object.keys(user).forEach((key) => formData.append(key, user[key]));
+    Object.keys(user).forEach(key => formData.append(key, user[key]));
+    console.log('THE FORM DATA RECEIVED IN AUTH SERVICE : ' , formData);
 
-    const userData = {
-      username: user.username,
-      password: user.password,
-      firstName: user.firstName,
-      lastName: user.lastName,
-      position: user.position,
-      jerseyNumber: user.jerseyNumber,
-    };
-    console.log("THE FORM DATA RECEIVED IN AUTH SERVICE : ", userData);
-    console.log("IN AUTH SERVICE : ", formData);
+    console.log('THE REAL SHIT : ', user);
 
-  return  axios({
-      method: 'post',	
-      url: `${process.env.REACT_APP_API_URL}/auth/`,
-      data: userData,
-      config: { headers: {'Content-Type': 'multipart/form-data' }}	
-      }).then((response) => {console.log(response)}).catch((err) => {
-        if(err){
-          console.log('THIS IS THE ERROR: ', err);
-        }
-      });
+const payload = {
+  username: user.username,
+  email: user.email,
+  firstName:user.firstName,
+  lastName: user.lastName,
+  password: user.password,
+  url: user.url,
+  position:"Center",
 
-
-  
+}
+   let axiosConfig = {
+    headers: {
+        'Content-Type': 'application/json;charset=UTF-8',
+        "Access-Control-Allow-Origin": "*",
+       "Access-Control-Allow-Methods": "POST"
+    }
   };
+
+
+   console.log('the payload is : ', formData)
+   return this.service.post('/signup', payload,axiosConfig).then(response => console.log(response.data)).catch(err => console.log('ERROR: ', err));
+ }
+
+  // signup = (user) => {
+  //   const formData = new FormData();
+  //   Object.keys(user).forEach(key => formData.append(key, user[key]));
+  //   console.log(user)
+    
+  //   return this.service.post('/signup', formData,{
+  //     headers: {
+  //       "Content-Type": "multipart/form-data"
+  //     }
+  //   }
+    
+       
+    
+  // ).then(response => response.data)
+  //   }
+
 
   // login = (user) => {
 

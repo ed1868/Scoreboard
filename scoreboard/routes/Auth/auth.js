@@ -21,19 +21,21 @@ const uploadCloud = require("../../config/cloudinary");
 
 router.post("/signup", (req, res, next) => {
   console.log("USER SIGN UP ROUTE IS BEIGN HIT");
+  console.log(req.data);
 // console.log(req)
 
   const {
     username,
+    email,
     password,
+    url,
     firstName,
     lastName,
     position,
-    jerseyNumber,
   } = req.body;
 
   // const url = req.file.url;
-console.log(Object.values(req.body));
+// console.log(Object.values(req.body));
   const encryptThis = password;
 
   console.log('ENCRYPT THIS SHIT : ', encryptThis)
@@ -58,10 +60,9 @@ console.log(Object.values(req.body));
       username,
       password: hashPass,
       email,
-      // url,
+      url,
       lastName,
       firstName,
-      jerseyNumber,
       position,
     });
 

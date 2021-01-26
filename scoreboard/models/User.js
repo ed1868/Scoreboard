@@ -24,11 +24,11 @@ const userSchema = new Schema(
     url: {
       type: String,
     },
-    first: {
+    firstNamee: {
       type: String,
       required: true,
     },
-    last: {
+    lastName: {
       type: String,
       required: true,
     },
