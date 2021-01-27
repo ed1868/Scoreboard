@@ -58,21 +58,21 @@ const payload = {
   //   }
 
 
-  // login = (user) => {
+  login = (user) => {
 
-  //   return this.service.post('/login', user)
-  //   .then(response => response.data)
-  // }
+    return this.service.post('/login', user)
+    .then(response => response.data)
+  }
 
-  // loggedin = () => {
-  //   return this.service.get('/loggedin')
-  //   .then(response => response.data);
-  // }
+  loggedin = () => {
+    return this.service.get('/loggedin')
+    .then(response => response.data);
+  }
 
-  // logout = () => {
-  //   return this.service.get('/logout')
-  //   .then(response => response.data);
-  // }
+  logout = () => {
+    return this.service.get('/logout')
+    .then(response => response.data);
+  }
 }
 
 export default AuthService;

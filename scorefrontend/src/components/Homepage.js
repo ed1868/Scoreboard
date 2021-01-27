@@ -51,7 +51,7 @@ export default class Homepage extends Component {
       <div>
 
         <div className="home-hero">
-          <h1 className="title">[VITAL]ITY</h1>
+          <h1 className="title">Dudes Balling Out Score</h1>
         
           </div>
 

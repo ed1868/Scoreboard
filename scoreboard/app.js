@@ -8,7 +8,11 @@ const hbs = require("hbs");
 const mongoose = require("mongoose");
 const logger = require("morgan");
 const path = require("path");
+const session = require("express-session");
 
+const MongoStore = require("connect-mongo")(session);
+
+const flash = require("connect-flash");
 const cors = require("cors");
 
 mongoose
@@ -59,6 +63,18 @@ app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 
 // default value for title local
 app.locals.title = "Express - Generated with IronGenerator";
+
+// Enable authentication using session + passport
+app.use(
+  session({
+    secret: "dudesHanging",
+    resave: true,
+    saveUninitialized: true,
+    store: new MongoStore({ mongooseConnection: mongoose.connection }),
+  })
+);
+app.use(flash());
+require("./passport")(app);
 
 const index = require("./routes/index");
 app.use("/", index);

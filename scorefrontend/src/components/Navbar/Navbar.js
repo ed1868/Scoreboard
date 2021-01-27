@@ -99,7 +99,12 @@ export default class NavBar extends Component {
               </ul>
               <span class="navbar-text">
                 <Link className="nav-link" to="/signup">
-                  Sign Up!
+                  Sign Up
+                </Link>
+              </span>
+              <span class="navbar-text">
+                <Link className="nav-link" to="/signIn">
+                  Log In
                 </Link>
               </span>
             </div>

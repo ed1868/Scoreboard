@@ -6,9 +6,11 @@ import { Provider } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Main from "./components/Main";
-import Signup from "./components/Auth/signup"
+import Signup from "./components/Auth/signup";
+import SignIn from "./components/Auth/signIn";
 
 // const store = configureStore();
+import authService from "./components/Auth/AuthService";
 
 class App extends Component {
   constructor() {
@@ -18,15 +20,15 @@ class App extends Component {
       user: null,
     };
 
-    // this.authService = new AuthService();
+    this.authService = new authService();
 
-    // this.fetchUser();
+    this.fetchUser();
   }
 
   fetchUser = () => {
-    // this.authService
-    //   .loggedin()
-    //   .then(user => this.setState({ ...this.state, user }));
+    this.authService
+      .loggedin()
+      .then((user) => this.setState({ ...this.state, user }));
   };
 
   getUser = (user) => {
@@ -34,9 +36,9 @@ class App extends Component {
   };
 
   logout = () => {
-    // this.authService
-    //   .logout()
-    //   .then(() => this.setState({ ...this.state, user: null }));
+    this.authService
+      .logout()
+      .then(() => this.setState({ ...this.state, user: null }));
   };
 
   render() {
@@ -59,6 +61,12 @@ class App extends Component {
               exact
               path="/signup"
               render={() => <Signup getUser={this.getUser} />}
+            />
+
+            <Route
+              exact
+              path="/signIn"
+              render={() => <SignIn getUser={this.getUser} />}
             />
           </Switch>
         </div>
