@@ -80,4 +80,20 @@ router.post("/signup",uploadCloud.single('url'), (req, res, next) => {
   });
 });
 
+
+//USER LOG IN ROUTE
+
+
+router.post("/login",(req,res,next) => {
+    console.log('LOGIN ROUTE IS BEING HIT');
+
+    passport.authenticate('local', (err,user,info) => {
+      if(err) { return next(err)}
+      if(!user) {return res.json({message: 'UNAUTHORIZED BITCH'})}
+      req.logIn(user, (err) => {
+        if(err){return res.status(500).json({message:'ERROR WHILE LOG IN '});}
+        return res.status(200).json(user);
+      });
+    })(req,res,next);
+});
 module.exports = router;
