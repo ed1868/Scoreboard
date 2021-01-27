@@ -17,18 +17,17 @@ const User = require("../../models/User");
 const uploadCloud = require("../../config/cloudinary");
 
 
+
 //USER SIGN UP ROUTE //
 
-router.post("/signup", (req, res, next) => {
+router.post("/signup",uploadCloud.single('url'), (req, res, next) => {
   console.log("USER SIGN UP ROUTE IS BEIGN HIT");
-  console.log(req.data);
-// console.log(req)
+
 
   const {
     username,
     email,
     password,
-    url,
     firstName,
     lastName,
     position,
@@ -36,6 +35,7 @@ router.post("/signup", (req, res, next) => {
 
   // const url = req.file.url;
 // console.log(Object.values(req.body));
+ const url = "CLOUDINARY TO BE FINISHED"
   const encryptThis = password;
 
   console.log('ENCRYPT THIS SHIT : ', encryptThis)

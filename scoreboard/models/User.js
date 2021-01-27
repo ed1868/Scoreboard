@@ -24,7 +24,7 @@ const userSchema = new Schema(
     url: {
       type: String,
     },
-    firstNamee: {
+    firstName: {
       type: String,
       required: true,
     },
