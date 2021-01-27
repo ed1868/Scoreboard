@@ -24,14 +24,16 @@ class App extends Component {
 
     this.fetchUser();
   }
-
+// console.log('HELLO : ',props)
   fetchUser = () => {
+    console.log('fetching user')
     this.authService
       .loggedin()
       .then((user) => this.setState({ ...this.state, user }));
   };
 
   getUser = (user) => {
+    console.log('get --- user')
     this.setState({ ...this.state, user });
   };
 
@@ -67,6 +69,14 @@ class App extends Component {
               exact
               path="/signIn"
               render={() => <SignIn getUser={this.getUser} />}
+            />
+
+            <Route
+              exact
+              path="/logout"
+              render={() => (
+                <Main getUser={this.getUser} logout={this.logout} />
+              )}
             />
           </Switch>
         </div>

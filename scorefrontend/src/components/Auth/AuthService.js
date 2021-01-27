@@ -41,23 +41,6 @@ const payload = {
    return this.service.post('/signup', payload,axiosConfig).then(response => console.log(response.data)).catch(err => console.log('ERROR: ', err));
  }
 
-  // signup = (user) => {
-  //   const formData = new FormData();
-  //   Object.keys(user).forEach(key => formData.append(key, user[key]));
-  //   console.log(user)
-    
-  //   return this.service.post('/signup', formData,{
-  //     headers: {
-  //       "Content-Type": "multipart/form-data"
-  //     }
-  //   }
-    
-       
-    
-  // ).then(response => response.data)
-  //   }
-
-
   login = (user) => {
 
     return this.service.post('/login', user)

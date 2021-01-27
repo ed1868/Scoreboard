@@ -16,7 +16,16 @@ const User = require("../../models/User");
 
 const uploadCloud = require("../../config/cloudinary");
 
-
+const login = (req, user) => new Promise((resolve, reject) => {
+  req.login(user, (err) => {
+    console.log(user);
+    if (err) {
+      reject(new Error('Something went wrong'));
+    } else {
+      resolve(user);
+    }
+  });
+});
 
 //USER SIGN UP ROUTE //
 
@@ -96,4 +105,13 @@ router.post("/login",(req,res,next) => {
       });
     })(req,res,next);
 });
+
+
+//USER LOG OUT ROUTE 
+
+
+router.get('/logout',(req,res,next) => {
+  req.logOut();
+  res.status(200).json({message: 'You Logged Out Succesfully'})
+})
 module.exports = router;
