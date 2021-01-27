@@ -7,6 +7,7 @@ const Main = props => {
   console.log('HELLO : ',props)
   return (
     <div className="container">
+      
       <Switch>
         {/* <Route exact path="/" render={props => <Homepage {...props} />} /> */}
       </Switch>

@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Main from "./components/Main";
 import Signup from "./components/Auth/signup";
 import SignIn from "./components/Auth/signIn";
+import Homepage from "./components/Homepage";
 
 // const store = configureStore();
 import authService from "./components/Auth/AuthService";
@@ -52,11 +53,13 @@ class App extends Component {
             userInSession={this.state.user}
             logout={this.logout}
           />
+   
           <Switch>
             <Route
               exact
               path="/"
-              render={() => <Main getUser={this.getUser} />}
+              render={() => <Homepage fetchUser={this.fetchUser}   userInSession={this.state.user}
+              logout={this.logout}/> }
             />
 
             <Route

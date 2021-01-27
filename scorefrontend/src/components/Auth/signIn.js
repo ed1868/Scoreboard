@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import AuthService from "./AuthService";
 import { Redirect } from "react-router-dom";
+import NavBar from '../Navbar/Navbar'
 
 export default class Login extends Component {
   constructor() {
@@ -36,6 +37,7 @@ export default class Login extends Component {
     if (!this.state.redirect) {
       return (
         <div>
+        
           <div className="row justify-content-md-center text-center">
             <div className="col-md-6">
               <form onSubmit={this.handleFormSubmit}>

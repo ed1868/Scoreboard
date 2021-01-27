@@ -1,15 +1,24 @@
 import React, { Component } from "react";
+import AuthService from "../components/Auth/AuthService";
 
 export default class Homepage extends Component {
-  constructor() {
-    super();
-    this.state = {
-      query: "",
-      currentScore: "",
-    };
-    // this.service = new Service();
-    
+  constructor(props) {
+    super(props);
+    this.props = props;
+    this.state = { loggedInUser: this.props["userInSession"] };
+    this.service = new AuthService();
+    this.redirect = false;
   }
+
+  willReceiveProps(props) {
+    this.setState({ ...this.state, loggedInUser: this.props["userInSession"] });
+  }
+  logOutHandler = (e) => {
+    console.log("----props----", this.props);
+    this.props.logout();
+    this.redirect = true;
+  };
+
   handleFormSubmit = (e) => {
     e.preventDefault();
 
@@ -17,8 +26,6 @@ export default class Homepage extends Component {
 
     console.log(this.state);
     console.log(query);
-
-  
 
     this.service
       .search({
@@ -44,31 +51,63 @@ export default class Homepage extends Component {
   };
 
   render() {
-    console.log('LA POINGA L: ',this.props)
-    return (
-      <div>
-        <div className="home-hero pt-5">
-          <h1 className="title">Dudes Balling Out Score</h1>
-        </div>
-        <section className="scoreSection">
-          <div className="container">
-            <div className="row mt-5">
-              <div className="col-md-5">
-                <h2>Hwek21</h2>
-                <h2>1</h2>
-              </div>
-              <div className="col-md-2">
-                <h4>Versus</h4>
-              </div>
+    console.log("HOME PAGE USER IN SESSION : ", this.props.userInSession);
+    if (this.props.userInSession != null) {
+      console.log("HOME PAGE USER: ", this.state.loggedInUser);
+      return (
+        <div>
+          <div className="home-hero pt-5">
+            <h1 className="title">Dudes Balling Out Score</h1>
+          </div>
+          <section className="scoreSection">
+            <div className="container">
+              <div className="row mt-5">
+                <div className="col-md-5">
+                  <h2>Hwek21</h2>
+                  <h2>1</h2>
+                  <button className="btn btn-success">Add Match</button>
+                </div>
+                <div className="col-md-2">
+                  <h4>Versus</h4>
+                </div>
 
-              <div className="col-md-5">
-                <h2>Josh21</h2>
-                <h2>1</h2>
+                <div className="col-md-5">
+                  <h2>Josh21</h2>
+                  <h2>1</h2>
+                </div>
               </div>
             </div>
+          </section>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <div>
+            <div className="home-hero pt-5">
+              <h1 className="title">Dudes Balling Out Score</h1>
+            </div>
+            <section className="scoreSection">
+              <div className="container">
+                <div className="row mt-5">
+                  <div className="col-md-5">
+                    <h2>Hwek21</h2>
+                    <h2>1</h2>
+                  </div>
+                  <div className="col-md-2">
+                    <h4>Versus</h4>
+                  </div>
+
+                  <div className="col-md-5">
+                    <h2>Josh21</h2>
+                    <h2>1</h2>
+                  </div>
+                </div>
+              </div>
+            </section>
           </div>
-        </section>
-      </div>
-    );
+        </div>
+      );
+    }
   }
 }
