@@ -32,19 +32,16 @@ const debug = require("debug")(
 );
 
 const app = express();
-
-app.use(cors());
+app.use(cors({
+  credentials: true,
+  origin: ['http://localhost:3000']
+}));
 
 // Middleware Setup
 app.use(logger("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  next();
-});
 
 // Express View engine setup
 
@@ -73,6 +70,8 @@ app.use(
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
   })
 );
+
+
 app.use(flash());
 require("./passport")(app);
 

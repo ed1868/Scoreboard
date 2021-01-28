@@ -27,6 +27,17 @@ const login = (req, user) => new Promise((resolve, reject) => {
   });
 });
 
+
+//USER LOGGED IN ROUTE //
+
+router.get('/loggedin', (req, res) => {
+  console.log('THIS IS WHAT YOU ARE LOOKING FOR', req.user);
+  if (req.isAuthenticated()) {
+    return res.status(200).json(req.user);
+  }
+  return res.status(403).json({ message: 'Unauthorized' });
+});
+
 //USER SIGN UP ROUTE //
 
 router.post("/signup",uploadCloud.single('url'), (req, res, next) => {
@@ -95,13 +106,15 @@ router.post("/signup",uploadCloud.single('url'), (req, res, next) => {
 
 router.post("/login",(req,res,next) => {
     console.log('LOGIN ROUTE IS BEING HIT');
+    console.log('SESSION -----> ', req.session)
 
     passport.authenticate('local', (err,user,info) => {
       if(err) { return next(err)}
       if(!user) {return res.json({message: 'UNAUTHORIZED BITCH'})}
       req.logIn(user, (err) => {
         if(err){return res.status(500).json({message:'ERROR WHILE LOG IN '});}
-        return res.status(200).json(user);
+        req.session.currentUser = user;
+        return res.status(200).json(req.session.currentUser);
       });
     })(req,res,next);
 });
