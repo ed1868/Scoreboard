@@ -9,6 +9,7 @@ import Main from "./components/Main";
 import Signup from "./components/Auth/signup";
 import SignIn from "./components/Auth/signIn";
 import Homepage from "./components/Homepage";
+import MatchForm from "./components/Match/matchForm"
 
 // const store = configureStore();
 import authService from "./components/Auth/AuthService";
@@ -25,16 +26,16 @@ class App extends Component {
 
     this.fetchUser();
   }
-// console.log('HELLO : ',props)
+  // console.log('HELLO : ',props)
   fetchUser = () => {
-    console.log('fetching user')
+    console.log("fetching user");
     this.authService
       .loggedin()
       .then((user) => this.setState({ ...this.state, user }));
   };
 
   getUser = (user) => {
-    console.log('get --- user')
+    console.log("get --- user");
     this.setState({ ...this.state, user });
   };
 
@@ -53,13 +54,18 @@ class App extends Component {
             userInSession={this.state.user}
             logout={this.logout}
           />
-   
+
           <Switch>
             <Route
               exact
               path="/"
-              render={() => <Homepage fetchUser={this.fetchUser}   userInSession={this.state.user}
-              logout={this.logout}/> }
+              render={() => (
+                <Homepage
+                  fetchUser={this.fetchUser}
+                  userInSession={this.state.user}
+                  logout={this.logout}
+                />
+              )}
             />
 
             <Route
@@ -79,6 +85,14 @@ class App extends Component {
               path="/logout"
               render={() => (
                 <Main getUser={this.getUser} logout={this.logout} />
+              )}
+            />
+
+            <Route
+              exact
+              path="/addMatch"
+              render={() => (
+                <MatchForm getUser={this.getUser}    userInSession={this.state.user}/>
               )}
             />
           </Switch>

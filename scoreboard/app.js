@@ -82,6 +82,11 @@ const authRoutes = require("./routes/Auth/auth");
 
 app.use("/auth", authRoutes);
 
+const matchRoutes = require("./routes/Match/match");
+
+app.use("/match", matchRoutes);
+
+
 app.use((req, res) => {
   res.sendFile(`${__dirname}/public/index.html`);
 });

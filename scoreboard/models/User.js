@@ -32,11 +32,9 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-
-    position: {
-      type: String,
-      enum: ["Shooting Guard", "Center", "Other"],
-    },
+    score:{
+      type:String
+    }
   },
   {
     timestamps: {

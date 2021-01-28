@@ -66,7 +66,7 @@ export default class Homepage extends Component {
                 <div className="col-md-5">
                   <h2>Hwek21</h2>
                   <h2>1</h2>
-                  <Link className="btn btn-success mt-4 mb-3" to="/signin">
+                  <Link className="btn btn-success mt-4 mb-3" to="/addMatch">
                   Add Match
                 </Link>
                   
