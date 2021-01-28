@@ -2,10 +2,12 @@ import axios from "axios";
 
 class AuthService {
   constructor() {
-    this.service = axios.create({
+    let service = axios.create({
       baseURL: `${process.env.REACT_APP_API_URL}/auth`,
+      withCredentials: true
     
-    })
+    });
+    this.service = service;  
   }
 
  signup = (user) => {

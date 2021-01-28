@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import AuthService from "../components/Auth/AuthService";
+import { Link } from "react-router-dom";
 
 export default class Homepage extends Component {
   constructor(props) {
@@ -65,7 +66,10 @@ export default class Homepage extends Component {
                 <div className="col-md-5">
                   <h2>Hwek21</h2>
                   <h2>1</h2>
-                  <button className="btn btn-success">Add Match</button>
+                  <Link className="btn btn-success mt-4 mb-3" to="/signin">
+                  Add Match
+                </Link>
+                  
                 </div>
                 <div className="col-md-2">
                   <h4>Versus</h4>

@@ -35,9 +35,9 @@ export default class NavBar extends Component {
       return (
         <div>
           <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">
-              Dudes Balling Out
-            </a>
+          <Link className="navbar-brand" to="/">
+                  Dudes Balling Out
+                </Link>
             <button
               class="navbar-toggler"
               type="button"
