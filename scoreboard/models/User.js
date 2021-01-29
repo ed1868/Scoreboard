@@ -33,7 +33,8 @@ const userSchema = new Schema(
       required: true,
     },
     score:{
-      type:String
+      type:String,
+      default:"0"
     }
   },
   {
