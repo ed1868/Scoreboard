@@ -27,7 +27,7 @@ export default class MatchForm extends Component {
     e.preventDefault();
 
     const {
-     
+    
       finalScore,
       matchOneWinner,
       matchTwoWinner,

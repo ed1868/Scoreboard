@@ -6,7 +6,10 @@ export default class Homepage extends Component {
   constructor(props) {
     super(props);
     this.props = props;
-    this.state = { loggedInUser: this.props["userInSession"] };
+    this.state = {
+      loggedInUser: this.props["userInSession"],
+      oponent: this.props["opponent"],
+    };
     this.service = new AuthService();
     this.redirect = false;
   }
@@ -64,12 +67,11 @@ export default class Homepage extends Component {
             <div className="container">
               <div className="row mt-5">
                 <div className="col-md-5">
-                  <h2>Hwek21</h2>
-                  <h2>1</h2>
+                  <h2>{this.props.userInSession.username}</h2>
+                  <h2>{this.props.userInSession.score}</h2>
                   <Link className="btn btn-success mt-4 mb-3" to="/addMatch">
-                  Add Match
-                </Link>
-                  
+                    Add Match
+                  </Link>
                 </div>
                 <div className="col-md-2">
                   <h4>Versus</h4>
