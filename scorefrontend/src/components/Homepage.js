@@ -74,7 +74,7 @@ export default class Homepage extends Component {
                   </Link>
                 </div>
                 <div className="col-md-2">
-                  <h4>Versus</h4>
+                  <h4>Vs</h4>
                 </div>
 
                 <div className="col-md-5">
