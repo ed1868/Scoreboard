@@ -1,0 +1,124 @@
+{
+  "header": {
+    "supplierId": "IHG",
+    "distributorId": "OVERSEAS",
+    "version": "v4.0",
+    "token": "1612284400901"
+  },
+  "reservationIds": {
+    "distributorResId": "IHG01",
+    "derbyResId": "",
+    "supplierResId": "IHG01"
+  },
+  "iata": "",
+  "hotelId": "SANBY",
+  "stayRange": {
+    "checkin": "2021-04-15",
+    "checkout": "2021-04-17"
+  },
+    "payment": {
+    "cardCode": "VI",
+    "cardNumber": "4111111111111111",
+    "cardHolderName": "Sherlock Holmes",
+    "expireDate": "0121"
+  },
+  "contactPerson": {
+    "firstName": "Eddie",
+    "lastName": "Ruiz",
+    "email": "eddi@overseasinternational.com",
+    "phone": "7862768686",
+    "address": "814 ponce de leon bld",
+    "age": 27,
+    "type": "Adult",
+    "index": 1
+  },
+  "roomCriteria": {
+    "roomCount": 1,
+    "adultCount": 2,
+    "childCount": 0,
+    "childAges": []
+    
+  },
+  "total": {
+    "amountBeforeTax": 318,
+    "amountAfterTax":343.18
+  },
+
+    "guests": [
+    {
+      "firstName": "James",
+      "lastName": "Bond",
+      "email": "007@james.com",
+      "phone": "string",
+      "address": "string",
+      "age": 0,
+      "type": "Adult",
+      "index": 1
+    },
+        {
+      "firstName": "James",
+      "lastName": "Dean",
+      "email": "007@james.com",
+      "phone": "string",
+      "address": "string",
+      "age": 0,
+      "type": "Adult",
+      "index":2
+    }
+  ],
+  "roomRates": [
+   {
+            "roomId": "KNGN",
+            "rateId": "IWB25",
+            "currency": "USD",
+            "inventory": 9,
+            "amountBeforeTax": [
+                168.75,
+                149.25
+            ],
+            "mealPlan": "BB",
+            "fees": [
+                {
+                    "dateRange": {
+                        "startDate": "2021-04-15",
+                        "endDate": "2021-04-16"
+                    },
+                    "fee": {
+                        "name": "TaxPercent",
+                        "type": "Exclusive",
+                        "amount": 12.590,
+                        "amountType": "Percent",
+                        "chargeType": "PerRoomPerNight"
+                    }
+                }
+            ],
+            "cancelPolicy": {
+                "code": "1D1N_1N",
+                "description": "Canceling your reservation before 6:00 PM (local hotel time) on Wednesday, 14 April, 2021 will result in no charge. Canceling your reservation after 6:00 PM (local hotel time) on 14 April, 2021, or failing to show, will result in a charge equal to the first night's stay per room to your credit card or other guaranteed payment method. Taxes may apply. Failing to call or show before check-out time after the first night of a reservation will result in cancellation of the remainder of your reservation.\n",
+                "cancelPenalties": [
+                    {
+                        "noShow": false,
+                        "cancellable": true,
+                        "cancelDeadline": {
+                            "offsetTimeDropType": "BeforeArrival",
+                            "offsetTimeUnit": "D",
+                            "offsetTimeValue": 1
+                        },
+                        "penaltyCharge": {
+                            "chargeBase": "NightBase",
+                            "nights": 1
+                        }
+                    },
+                    {
+                        "noShow": true,
+                        "penaltyCharge": {
+                            "chargeBase": "NightBase",
+                            "nights": 1
+                        }
+                    }
+                ]
+            }
+        }
+  ],
+   "bookingToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjoiT1ZFUlNFQVN8SUhHfFNBTkJZfDIwMjEwNDE1fDIwMjEwNDE3fDF8MnwwfFtdfEtOR058SVdCMjUiLCJ0aW1lIjoiMTYxMjMwMjU2MTU4MCJ9.I-glWEin5lr3sxQFZeimhhCAShwrHipS3a-7tK7syIg"
+}
