@@ -20,6 +20,7 @@ class App extends Component {
 
     this.state = {
       user: null,
+      opponent:null,
     };
 
     this.authService = new authService();
@@ -34,6 +35,10 @@ class App extends Component {
       .then((user) => this.setState({ ...this.state, user }));
   };
 
+  opponent = () => {
+    console.log('Fetching opponent');
+    this.authService.opponent().then((opponent) => this.setState({ ...this.state, opponent}));
+  }
   getUser = (user) => {
     console.log("get --- user");
     this.setState({ ...this.state, user });
@@ -63,6 +68,7 @@ class App extends Component {
                 <Homepage
                   fetchUser={this.fetchUser}
                   userInSession={this.state.user}
+                  opponent={this.state.opponent}
                   logout={this.logout}
                 />
               )}
