@@ -26,6 +26,7 @@ class App extends Component {
     this.authService = new authService();
 
     this.fetchUser();
+    this.opponent();
   }
   // console.log('HELLO : ',props)
   fetchUser = () => {

@@ -38,6 +38,31 @@ router.get('/loggedin', (req, res) => {
   return res.status(403).json({ message: 'Unauthorized' });
 });
 
+//USER OPPONENT ROUTE
+router.get('/opponent', (req,res) => {
+  let playerOne = "hwek21";
+  let playerTwo = "josh21"
+if(req.user.username == playerOne){
+  User.findOne({username: new RegExp('^'+playerTwo+'$', "i")}, function(err, opponent) {
+    if(err){
+      console.log('ERROR FETCHING OPPONENT: ', err);
+    }
+
+    return res.status(200).json(opponent)
+  });
+}else if(req.user.username == playerTwo){ 
+  User.findOne({username: new RegExp('^'+playerOne+'$', "i")}, function(err, opponent) {
+    if(err){
+      console.log('ERROR FETCHING OPPONENT: ', err);
+    }
+
+    return res.status(200).json(opponent)
+  });
+}
+else{
+  return;
+}
+});
 //USER SIGN UP ROUTE //
 
 router.post("/signup",uploadCloud.single('url'), (req, res, next) => {
