@@ -9,14 +9,24 @@ export default class Homepage extends Component {
     this.state = {
       loggedInUser: this.props["userInSession"],
       oponent: this.props["opponent"],
+      userData: this.props["userData"]
     };
     this.service = new AuthService();
     this.redirect = false;
   }
 
+
   willReceiveProps(props) {
-    this.setState({ ...this.state, loggedInUser: this.props["userInSession"] });
+    this.setState({
+      ...this.state,
+      loggedInUser: this.props["userInSession"],
+      oponent: this.props["opponent"],
+    });
+  
+
+
   }
+
   logOutHandler = (e) => {
     console.log("----props----", this.props);
     this.props.logout();
@@ -56,7 +66,7 @@ export default class Homepage extends Component {
 
   render() {
     console.log("HOME PAGE USER IN SESSION : ", this.props.userInSession);
-    if (this.props.userInSession != null) {
+    if (this.props.userInSession != null && this.props.opponent !=null) {
       console.log("HOME PAGE USER: ", this.state.loggedInUser);
       return (
         <div>
@@ -78,8 +88,8 @@ export default class Homepage extends Component {
                 </div>
 
                 <div className="col-md-5">
-                  <h2>Josh21</h2>
-                  <h2>1</h2>
+                  <h2>{this.props.opponent.username}</h2>
+                  <h2>{this.props.opponent.score}</h2>
                 </div>
               </div>
             </div>
@@ -87,6 +97,7 @@ export default class Homepage extends Component {
         </div>
       );
     } else {
+      console.log('ENTERING IN THE ELSE AT HOME ')
       return (
         <div>
           <div>

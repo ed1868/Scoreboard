@@ -26,7 +26,7 @@ export default class NavBar extends Component {
 
   render() {
     if (this.redirect) {
-      return <Redirect to="/signIn" />;
+      return <Redirect to="/" />;
     }
 
     console.log(this.props.userInSession);

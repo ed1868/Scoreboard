@@ -10,7 +10,8 @@ export default class Login extends Component {
     this.state = {
       username: "",
       password: "",
-      redirect: false
+      redirect: false,
+      user:""
     };
 
     this.authService = new AuthService();
@@ -74,7 +75,7 @@ export default class Login extends Component {
         </div>
       );
     } else {
-      return <Redirect to="/" />;
+      return <Redirect to="/" user={this.state.user} />;
     }
   }
 }

@@ -9,7 +9,7 @@ import Main from "./components/Main";
 import Signup from "./components/Auth/signup";
 import SignIn from "./components/Auth/signIn";
 import Homepage from "./components/Homepage";
-import MatchForm from "./components/Match/matchForm"
+import MatchForm from "./components/Match/matchForm";
 
 // const store = configureStore();
 import authService from "./components/Auth/AuthService";
@@ -20,13 +20,15 @@ class App extends Component {
 
     this.state = {
       user: null,
-      opponent:null,
+      opponent: null,
+      userData: null,
     };
 
     this.authService = new authService();
 
     this.fetchUser();
     this.opponent();
+    this.userData();
   }
   // console.log('HELLO : ',props)
   fetchUser = () => {
@@ -36,10 +38,35 @@ class App extends Component {
       .then((user) => this.setState({ ...this.state, user }));
   };
 
+  userData = () => {
+    let users = [];
+    console.log("FETCHING USERS");
+    this.authService.usersData().then((userData) => {
+      console.log(
+        "THIS IS THE PAYLOAD DATA BACK RFOM BACKEND: ",
+        typeof userData
+      );
+
+      userData.map((user) => {
+        console.log("ONE USER : ", user);
+        users.push(user);
+      });
+    });
+
+    let userOne = users[0];
+    let userTwo = users[1];
+
+    this.setState({ ...this.state.userOne, userOne });
+
+
+  };
+
   opponent = () => {
-    console.log('Fetching opponent');
-    this.authService.opponent().then((opponent) => this.setState({ ...this.state, opponent}));
-  }
+    console.log("Fetching opponent");
+    this.authService
+      .opponent()
+      .then((opponent) => this.setState({ ...this.state, opponent }));
+  };
   getUser = (user) => {
     console.log("get --- user");
     this.setState({ ...this.state, user });
@@ -69,6 +96,7 @@ class App extends Component {
                 <Homepage
                   fetchUser={this.fetchUser}
                   userInSession={this.state.user}
+                  userData={this.state.getUserData}
                   opponent={this.state.opponent}
                   logout={this.logout}
                 />
@@ -99,7 +127,10 @@ class App extends Component {
               exact
               path="/addMatch"
               render={() => (
-                <MatchForm getUser={this.getUser}    userInSession={this.state.user}/>
+                <MatchForm
+                  getUser={this.getUser}
+                  userInSession={this.state.user}
+                />
               )}
             />
           </Switch>

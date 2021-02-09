@@ -4,63 +4,62 @@ class AuthService {
   constructor() {
     let service = axios.create({
       baseURL: `${process.env.REACT_APP_API_URL}/auth`,
-      withCredentials: true
-    
+      withCredentials: true,
     });
-    this.service = service;  
+    this.service = service;
   }
 
- signup = (user) => {
-  
-
-
+  signup = (user) => {
     const formData = new FormData();
-    Object.keys(user).forEach(key => formData.append(key, user[key]));
-    console.log('THE FORM DATA RECEIVED IN AUTH SERVICE : ' , formData);
+    Object.keys(user).forEach((key) => formData.append(key, user[key]));
+    console.log("THE FORM DATA RECEIVED IN AUTH SERVICE : ", formData);
 
-    console.log('THE REAL SHIT : ', user);
+    console.log("THE REAL SHIT : ", user);
 
-const payload = {
-  username: user.username,
-  email: user.email,
-  firstName:user.firstName,
-  lastName: user.lastName,
-  password: user.password,
-  url: user.url,
-  position:"Center",
-
-}
-   let axiosConfig = {
-    headers: {
-        'Content-Type': 'application/json;charset=UTF-8',
+    const payload = {
+      username: user.username,
+      email: user.email,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      password: user.password,
+      url: user.url,
+      position: "Center",
+    };
+    let axiosConfig = {
+      headers: {
+        "Content-Type": "application/json;charset=UTF-8",
         "Access-Control-Allow-Origin": "*",
-       "Access-Control-Allow-Methods": "POST"
-    }
+        "Access-Control-Allow-Methods": "POST",
+      },
+    };
+
+    console.log("the payload is : ", formData);
+    return this.service
+      .post("/signup", payload, axiosConfig)
+      .then((response) => console.log(response.data))
+      .catch((err) => console.log("ERROR: ", err));
   };
 
-
-   console.log('the payload is : ', formData)
-   return this.service.post('/signup', payload,axiosConfig).then(response => console.log(response.data)).catch(err => console.log('ERROR: ', err));
- }
-
   login = (user) => {
-
-    return this.service.post('/login', user)
-    .then(response => response.data)
-  }
+    return this.service.post("/login", user).then((response) => response.data);
+  };
 
   loggedin = () => {
-    return this.service.get('/loggedin')
-    .then(response => response.data);
-  }
+    this.opponent();
+    
+    return this.service.get("/loggedin").then((response) =>
+    response.data);
+  };
 
   opponent = () => {
-    return this.service.get('/opponent').then(response => response.data)
-  }
+    return this.service.get("/opponent").then((response) => response.data);
+  };
+  usersData = () => {
+    return this.service.get("/users").then((response) => response.data);
+  };
   logout = () => {
-    return this.service.get('/logout')
-    .then(response => response.data);
-  }
+    return this.service.get("/logout").then((response) => response.data);
+  };
 }
 
 export default AuthService;

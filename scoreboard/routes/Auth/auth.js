@@ -63,6 +63,23 @@ else{
   return;
 }
 });
+
+//USERS DATA ROUTE 
+
+router.get('/users', (req,res) => {
+let usersPayload = [];
+
+User.find({}).then((users) => {
+ users.map(user => {
+  usersPayload.push(user);
+ });
+ console.log('THE USER PAYLOAD : ', usersPayload)
+
+ let payload = JSON.stringify(usersPayload)
+return  res.status(200).json(usersPayload);
+})
+
+});
 //USER SIGN UP ROUTE //
 
 router.post("/signup",uploadCloud.single('url'), (req, res, next) => {
